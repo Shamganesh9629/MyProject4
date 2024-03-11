@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:text=" Name" />
+    <TextView
+        android:id="@+id/nameText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:layout_toEndOf="@id/mobileNumberText"/>
+    <TextView
+        android:id="@+id/genderText"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameText"
+        android:text=" Gender" />
+    <TextView
+        android:id="@+id/genderText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:layout_below="@id/nameText2"
+        android:layout_toEndOf="@id/mobileNumberText"/>
+    <TextView
+        android:id="@+id/mobileNumberText"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genderText"
+        android:text=" MobileNUmber" />
+    <TextView
+        android:id="@+id/mobileNumberText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genderText2"
+        android:text="text"
+        android:layout_toEndOf="@id/mobileNumberText"/>
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mobileNumberText"
+        android:text=" Email" />
+    <TextView
+        android:id="@+id/emailText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:layout_below="@id/mobileNumberText2"
+        android:layout_toEndOf="@id/mobileNumberText"/>
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
