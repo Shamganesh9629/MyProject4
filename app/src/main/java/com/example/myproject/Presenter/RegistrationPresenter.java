@@ -9,10 +9,10 @@ public class RegistrationPresenter implements
         RegistrationContract.Model {
     private RegistrationContract.View registrationView;
     private RegistrationDetailsModel registrationModel;
+
     public RegistrationPresenter(RegistrationContract.View registrationView ){
         this.registrationView=registrationView;
         registrationModel = new RegistrationDetailsModel();
-
     }
 
     @Override
@@ -33,13 +33,10 @@ public class RegistrationPresenter implements
         registrationModel =null;
     }
 
-
     @Override
     public void requestDataFromServer() {
         registrationView.showProgress();
         registrationModel.getRegistration(this);
-
-
     }
 
     @Override

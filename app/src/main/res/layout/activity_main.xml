@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
+
     <TextView
         android:id="@+id/idTVResponse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text="" />
 
     <EditText
         android:id="@+id/editTextText"
@@ -17,35 +17,34 @@
         android:layout_height="53dp"
         android:ems="10"
         android:hint="Name"
-        android:inputType="text"
-        />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="match_parent"
         android:layout_height="52dp"
+        android:layout_below="@id/editTextText"
         android:ems="10"
         android:hint="Gender"
-        android:inputType="text"
-        android:layout_below="@id/editTextText" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/editTextText3"
         android:layout_width="match_parent"
         android:layout_height="53dp"
+        android:layout_below="@id/editTextText2"
         android:ems="10"
         android:hint="Mobile Number"
-        android:inputType="number"
-       android:layout_below="@id/editTextText2" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editTextText4"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:layout_below="@id/editTextText3"
         android:ems="10"
         android:hint="Email Id"
-        android:inputType="textEmailAddress"
-        android:layout_below="@id/editTextText3" />
+        android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/registerButton"

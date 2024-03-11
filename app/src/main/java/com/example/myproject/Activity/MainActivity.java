@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +27,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements RegistrationContract.View  {
     public EditText nameEdt, genderEdt, mobileNumberEdt, eMailEdt;
     public Button registerButtons;
-    public RegistrationDao registrationDao;
     private RegistrationPresenter registrationPresenter;
-    //private ProgressBar loadingPB;
-    private TextView responseTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +38,7 @@ public class MainActivity extends AppCompatActivity implements RegistrationContr
         mobileNumberEdt = (EditText) findViewById(R.id.editTextText3);
         eMailEdt = (EditText) findViewById(R.id.editTextText4);
         registerButtons = findViewById(R.id.registerButton);
-        responseTV = findViewById(R.id.idTVResponse);
         registrationPresenter = new RegistrationPresenter(this);
-
 
         registerButtons.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements RegistrationContr
 
     @Override
     public void onResponseFailure(String massage) {
-
+        Toast.makeText(this, massage, Toast.LENGTH_SHORT).show();
     }
 
     @Override

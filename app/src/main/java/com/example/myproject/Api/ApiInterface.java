@@ -1,5 +1,8 @@
 package com.example.myproject.Api;
 
+import androidx.annotation.RequiresPermission;
+import androidx.room.Delete;
+
 import com.example.myproject.RoomDataBase.Registration;
 
 import java.util.List;
@@ -15,4 +18,6 @@ public interface ApiInterface {
     Call<Registration> createPost(@Body Registration registration); // Use Void if no response is expected
     @GET("shamganesh")
     Call<List<Registration>> getAllRegistration();
+    @Delete
+    Call<List<Registration>> deleteRegistration();
 }

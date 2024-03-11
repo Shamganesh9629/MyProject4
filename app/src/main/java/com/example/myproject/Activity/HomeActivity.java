@@ -37,7 +37,6 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
     public RecycleAdapter recycleAdapter;
     private RegistrationPresenter registrationPresenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,6 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
                 startActivity(intent);
             }
         });
-
     }
 
 
@@ -68,11 +66,8 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
         }
     }
 
-
-
     public void insertData(List<Registration> registrations) {
         class GetTasks extends AsyncTask<Void, Void, Void> {
-
             @Override
             protected Void doInBackground(Void... voids) {
                 RegistrationDatabase.getInstance(getApplicationContext())
@@ -94,23 +89,18 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
 
     @Override
     public void showProgress() {
-        //progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-       // progressBar.setVisibility(View.GONE);
-
+       progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void setDataToViews(List<Registration> registration) {
         insertData(registration);
-        recycleAdapter = new RecycleAdapter(HomeActivity.this, registration);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-        recyclerView.setAdapter(recycleAdapter);
-        Toast.makeText(this, "Data ", Toast.LENGTH_SHORT).show();
+        setDataAdapter(registration);
     }
 
     @Override
@@ -119,11 +109,9 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
     }
 
     public static class NetworkUtils {
-
         public static boolean isNetworkConnected(Context context) {
             ConnectivityManager cm = (ConnectivityManager) context.
                     getSystemService(Context.CONNECTIVITY_SERVICE);
-
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
         }
@@ -131,36 +119,36 @@ public class HomeActivity extends AppCompatActivity implements RegistrationContr
 
     public void getData() {
         class GetTasks extends AsyncTask<Void, Void, List<Registration>> {
-
-
             @Override
             protected List<Registration> doInBackground(Void... voids) {
-
                 List<Registration> arrayData = RegistrationDatabase.
                         getInstance(getApplicationContext()).
                         registrationDao().getAllRegistration();
-                Log.d("arraydata", arrayData.toString());
                 return arrayData;
             }
 
             @Override
             protected void onPostExecute(List<Registration> arrayData) {
                 super.onPostExecute(arrayData);
-                recycleAdapter = new RecycleAdapter(HomeActivity.this, arrayData);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-                recyclerView.setAdapter(recycleAdapter);
+                setDataAdapter(arrayData);
             }
         }
+
         GetTasks gt = new GetTasks();
         gt.execute();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         registrationPresenter.onDestroy();
         registrationPresenter=null;
     }
+
+    private void setDataAdapter(List<Registration> registerDataList) {
+        recycleAdapter = new RecycleAdapter(HomeActivity.this, registerDataList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+        recyclerView.setAdapter(recycleAdapter);
+    }
 }
-
-
